@@ -1861,9 +1861,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   }
 });
 
@@ -1901,10 +1907,7 @@ Vue.component("example-component", __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: "#app",
-  data: {
-    message: "Hello Vue!"
-  }
+  el: "#app"
 });
 
 /***/ }),
@@ -37435,13 +37438,15 @@ var staticRenderFns = [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
+            _c("div", { staticClass: "card-header text-center" }, [
+              _vm._v(
+                "\n                    Example Component Lorem, ipsum dolor sit amet\n                    consectetur adipisicing elit. Aut voluptas pariatur\n                    sapiente ab aspernatur non velit mollitia sit beatae!\n                    Dolor nostrum, minima iure consequatur repellendus\n                    dolorem? Animi facere molestiae quo!\n                "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _vm._v(
-                "\n                    I'm an example component.\n                "
+                "\n                    I'm an example component!\n                "
               )
             ])
           ])

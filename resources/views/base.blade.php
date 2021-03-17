@@ -6,8 +6,9 @@
 				<title>@yield('title', config('app.name'))</title>
 				<!-- Fonts -->
 				<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
+				<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 				<link rel="stylesheet" href="../resources/css/app.css">
+				
 				<!-- Styles -->
 				<style>
 						/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -20,12 +21,13 @@
 				</style>
 		</head>
 
-		<body>
-			<div class="text-center">
+		<body class="py-6 flex flex-col items-center justify-between min-h-screen">
+			<main role="main" class="flex flex-col justify-center items-center">
 			 @yield('content')
+			</main>
 
 			 <!-- L'élément #app -->
-<section id="app" >
+<section id="app" class="text-center" >
 
     <example-component></example-component>
 
@@ -34,13 +36,13 @@
 
 
 				<footer>
-					<p>&copy; Copyright {{date('Y')}} 
+					<p class="text-gray-400">&copy; Copyright {{date('Y')}} 
 						@if(!Route::is('about'))
-						&middot;<a href="{{route('about')}}"> About us</a>	
+						&middot;<a href="{{route('about')}}" class="text-indigo-500"> About us</a>	
 						@endif	
 					</p>			
 				</footer>
-			</div>
+			</main>
 
 
 <script src="{{ asset('js/app.js') }}" ></script>
