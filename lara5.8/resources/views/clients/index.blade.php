@@ -22,7 +22,7 @@
             @foreach($clients as $client)                
                 <tr>
                 <th scope="row">{{$client->id}}</th>
-                    <td><a href="clients/{{$client->id}}">{{$client->name}}<a </td>
+                    <td><a href="clients/{{$client->id}}">{{$client->name}}<a></td>
                     <td>{{$client->email}}</td>
                     <td>{{$client->getStatus($client->status)}}</td>
                     <td>{{$client->entreprise->name}}</td>

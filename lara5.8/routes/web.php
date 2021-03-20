@@ -15,3 +15,5 @@ Route::get('clients', 'ClientsController@index')->name('clients');
 Route::get('clients/create', 'ClientsController@create')->name('clients/create');
 Route::post('clients', 'ClientsController@store');
 Route::get('clients/{client}', 'ClientsController@show');
+Route::get('clients/{client}/edit', 'ClientsController@edit');
+Route::patch('clients/{client}', 'ClientsController@update');
