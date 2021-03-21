@@ -23,10 +23,8 @@
         <div class="form-group">
             <select  aria-label="Default select example" name="status" class="form-select @error('status') is-invalid @enderror">
                 @foreach($client->getStatusOptions() as $key => $value)
-                    <option value="{{$key}}" {{$client->getStatus($client->status) == $value ? 'selected' : ''}}>{{$value}}</option>
+                    <option value="{{$key}}" {{$client->status == $value ? 'selected' : ''}}>{{$value}}</option>
                 @endforeach
-                
-                
             </select>
              @error('status')  
             <div class="invalid-feedback">

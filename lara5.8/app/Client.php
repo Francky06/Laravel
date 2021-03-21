@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model {
     protected $guarded = [];
-    protected $attibruts = [
-        'status' => '0'
+    protected $attributes = [
+        'status' => 1
     ];
+
+   
+
 
     public function scopeStatus($query) {
         return $query->where('status', 1)->get();
@@ -18,16 +21,16 @@ class Client extends Model {
         return $this->belongsTo('App\Entreprise');
     }
 
-    public function getStatus($attributs) {
-        return $this->getStatusOptions()[$attributs];
-            
-    }
+    public function getStatusAttribute($attributes) {
+       return $this->getStatusOptions()[$attributes];   
+        }   
 
     public function getStatusOptions() {
-         return [
+        return [
             '0' => 'Inactif',
             '1' => 'Actif',
             '2' => 'En attente'
-         ];
+        ];
     }
+
 }

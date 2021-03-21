@@ -51,14 +51,19 @@ class ClientsController extends Controller {
     }
 
     public function update(Client $client) {
-                    $data = request()->validate([
-            'name'=> 'required|min:3',
-            'email' => 'required|email',
-            'status'=> 'required|integer',
-            'entreprise_id'=> 'required|integer'
+            $data = request()->validate([
+                'name'=> 'required|min:3',
+                'email' => 'required|email',
+                'status'=> 'required|integer',
+                'entreprise_id'=> 'required|integer'
             ]);
 
             $client->update($data);
             return redirect('clients/' . $client->id);
+    }
+
+    public function destroy(Client $client) {
+            $client->delete();
+            return redirect('clients');
     }
 }
