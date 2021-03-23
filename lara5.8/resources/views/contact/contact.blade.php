@@ -1,14 +1,14 @@
 
-@extends('layout')
+@extends('layouts.app')
     
 @section('content')
+
+    @if (!session()->has('message'))
     <div>
         <h1>Contactez-nous</h1>
-    </div><br>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam optio saepe iusto molestiae nihil. 
-    Reiciendis nesciunt magni adipisci nisi consequuntur consectetur voluptate quis ut. Minima cumque voluptate eveniet quae debitis?</p><br>
-
-    <form action="contact" method="POST">
+    </div>
+    <br>
+    <form action="{{url ('contact')}}" method="POST">
         @csrf
         <div class="form-group">
             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nom Prenom" value="{{old('name')}}">
@@ -38,7 +38,8 @@
             </div>
             @enderror
         </div>
-
         <button type="submit" class="btn btn-success">Envoyer</button>
-    </form>
+    </form>  
+
+    @endif
 @endsection

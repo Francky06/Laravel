@@ -1,10 +1,10 @@
     
-@extends('layout')
+@extends('layouts.app')
     
 @section('content')
     <h1>Clients</h1><br>  
     <div>
-        <button><a href="clients/create">Nouveau client<a></button>
+        <button><a href="{{ route('clients/create')}}">Nouveau client<a></button>
     </div>
     <br>
     <div>  

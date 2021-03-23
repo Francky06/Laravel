@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 // url + view
-Route::view('a-propos', 'a-propos')->name('a-propos');
+Route::view('a-propos', 'a-propos')->name('a-propos')->middleware('test');
 Route::view('contact', 'contact/contact')->name('contact');
 
 // CLIENTS
@@ -16,9 +17,9 @@ Route::get('clients', 'ClientsController@index')->name('clients');
 Route::get('clients/create', 'ClientsController@create')->name('clients/create');
 Route::post('clients', 'ClientsController@store');
 Route::get('clients/{client}', 'ClientsController@show');
-Route::get('clients/{client}/edit', 'ClientsController@edit');
+Route::get('clients/{client}/edit', 'ClientsController@edit')->name('clients/edit');
 Route::delete('clients/{client}', 'ClientsController@destroy');
-Route::patch('clients/{client}', 'ClientsController@update');
+Route::patch('clients/{client}', 'ClientsController@update')->name('clients/update');
 
 // ou si pas de noms de routes
 // Route::resource('clients', 'ClientsController');
@@ -26,3 +27,7 @@ Route::patch('clients/{client}', 'ClientsController@update');
 // CONTACT
 Route::get('contact/create', 'ContactController@create');
 Route::post('contact', 'ContactController@store');
+
+//AUTH
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

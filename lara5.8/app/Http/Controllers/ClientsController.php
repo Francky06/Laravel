@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ClientsController extends Controller {
 
+    public function __construct() {
+        // only ou except
+        $this->middleware('auth')->except(['index']);
+    }
+
     public function index() {
         $clients = Client::all();
         return view('clients.index', compact('clients'));
@@ -35,7 +40,7 @@ class ClientsController extends Controller {
             ]);
 
         Client::create($data); 
-        return back();
+        return redirect('clients');
     }
 
     public function show(Client $client) {      
