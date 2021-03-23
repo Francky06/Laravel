@@ -32,14 +32,18 @@ class ClientsController extends Controller {
     }
 
     public function store() {
+        // validator
+        /*
         $data = request()->validate([
             'name'=> 'required|min:3',
             'email' => 'required|email',
             'status'=> 'required|integer',
             'entreprise_id'=> 'required|integer'
             ]);
+        */
 
-        Client::create($data); 
+        $client = Client::create($this->validator()); 
+        $this->storeImage($client);
         return redirect('clients');
     }
 
@@ -56,19 +60,32 @@ class ClientsController extends Controller {
     }
 
     public function update(Client $client) {
-            $data = request()->validate([
-                'name'=> 'required|min:3',
-                'email' => 'required|email',
-                'status'=> 'required|integer',
-                'entreprise_id'=> 'required|integer'
-            ]);
-
-            $client->update($data);
+            $client->update($this->validator());
+            $this->storeImage($client);
             return redirect('clients/' . $client->id);
     }
 
     public function destroy(Client $client) {
             $client->delete();
             return redirect('clients');
+    }
+
+    private function validator() {
+        return $data = request()->validate([
+            'name'=> 'required|min:3',
+            'email' => 'required|email',
+            'status'=> 'required|integer',
+            'entreprise_id'=> 'required|integer',
+            'image.*' => 'sometimes|image|mimes:jpg,jpeg,gif,png|max:5000'
+            ]);
+    }
+
+    private function storeImage(Client $client) {
+        if(request('image')) {
+            $client->update([
+                //créez dossier avatars dans public et store
+                'image' => request('image')->store('avatars', 'public'),
+            ]);
+        }
     }
 }

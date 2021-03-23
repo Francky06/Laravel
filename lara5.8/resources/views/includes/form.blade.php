@@ -45,3 +45,20 @@
             </div>
             @enderror
         </div>
+
+        <div class="form-group">
+              <div class="custom-file">
+                <label for="validatedCustomFile" class="form-label">Choisissez votre Avatar</label>
+                <input  type="file" id="validatedCustomFile" name="image" class="form-control @error('image') is-invalid @enderror">
+                
+                @error('image')  
+                    <div class="invalid-feedback">
+                        {{$errors->first('image')}}
+                    </div>
+                @enderror
+            </div>
+        </div> 
+
+       
+ 
+  
