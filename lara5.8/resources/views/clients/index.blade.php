@@ -1,12 +1,17 @@
-    
+   
 @extends('layouts.app')
     
 @section('content')
-    <h1>Clients</h1><br>  
+
+    <h1>Clients</h1><br> 
+    <!-- Utilisez namespace --> 
+    @can('create', App\Client::class)
     <div>
         <button><a href="{{ route('clients/create')}}">Nouveau client<a></button>
     </div>
     <br>
+    @endcan
+
     <div>  
         <table class="table table-dark table-striped table-hover">
             <thead>

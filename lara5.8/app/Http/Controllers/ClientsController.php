@@ -26,6 +26,9 @@ class ClientsController extends Controller {
 */
 
     public function create() {
+        // policy
+        $this->authorize('create', Client::class);
+
         $client = new Client();
         $entreprises = Entreprise::all();
         return view('clients.create', compact('entreprises', 'client'));
@@ -55,17 +58,26 @@ class ClientsController extends Controller {
 
 
     public function edit(Client $client) {
+            // policy
+            $this->authorize('edit', $client);
+
         $entreprises = Entreprise::all();
         return view('clients.edit', compact('client', 'entreprises'));
     }
 
     public function update(Client $client) {
+            // policy
+            $this->authorize('update', $client);
+
             $client->update($this->validator());
             $this->storeImage($client);
             return redirect('clients/' . $client->id);
     }
 
     public function destroy(Client $client) {
+            // policy
+            $this->authorize('delete', $client);
+
             $client->delete();
             return redirect('clients');
     }
