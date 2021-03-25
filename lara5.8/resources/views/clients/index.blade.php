@@ -36,5 +36,9 @@
             </tbody>
         </table>  
     </div> 
+    <nav class="d-flex justify-content-center">
+        <!-- Bug css bootstrap pagination 
+        $clients->links() -->
+    </nav>
 
 @endsection

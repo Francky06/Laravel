@@ -6,6 +6,18 @@ use App\Http\Controllers\ContactController;
 
 
 Route::get('/', function () {
+    $user = factory('App\User')->create();
+    /*
+    $phone = new App\Phone();
+    $phone->phone_number = '06 06 06 06 06';
+    $user->phone()->save($phone);
+    */
+    /*
+    $user->phone()->create([
+        'phone_number' => '06 05 04 03 02'
+    ]);
+    */
+
     return view('welcome');
 })->name('welcome');
 // url + view
