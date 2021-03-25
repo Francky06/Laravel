@@ -6,8 +6,9 @@ use App\Http\Controllers\ContactController;
 
 
 Route::get('/', function () {
+
+     /* TEST PHONE One To One
     $user = factory('App\User')->create();
-    /*
     $phone = new App\Phone();
     $phone->phone_number = '06 06 06 06 06';
     $user->phone()->save($phone);
@@ -18,8 +19,37 @@ Route::get('/', function () {
     ]);
     */
 
+        /* TEST POSTS OneToMany
+    $user = App\User::first();
+    $user->posts()->create([
+        "title" => "Hello",
+        "content" => "Super sontenu"
+
+    ]);
+        */
+
+    /* TEST ROLES MANYTOMANY
+    
+    $user = factory('App\User')->create();
+    //$roles = App\Role::all();
+    $roles = App\Role::first();
+    //detach(roles) pour enlever un role 
+    $user->roles()->attach($roles);
+
+    /* Role par id, sync au lieu de detach pour suncro les id
+    $user = factory('App\User')->create();
+    $user->roles()->attach([1, 3])
+    */ 
+
+
+
+
     return view('welcome');
 })->name('welcome');
+
+
+
+
 // url + view
 Route::view('a-propos', 'a-propos')->name('a-propos')->middleware('test');
 Route::view('contact', 'contact/contact')->name('contact');
