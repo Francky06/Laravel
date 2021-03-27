@@ -36,11 +36,17 @@
       <a class="p-2 link-secondary" href="#">Culture</a>
       <a class="p-2 link-secondary" href="#">Business</a>
       <a class="p-2 link-secondary" href="#">Politics</a>
-      <a class="p-2 link-secondary" href="#">Science</a>
+      <a class="p-2 link-success" href="#">PANIER <span class="badge bg-success"> {{Cart::count()}}</span></a>
     </nav>
   </div>
+
+@if(session('success'))
+  <div class="alert alert-success">
+      {{session('success')}}
+  </div>
+@endif
+
 </div>
-<br>
 
 <main class="container">
     @yield('hero')

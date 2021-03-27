@@ -17,6 +17,9 @@ Route::name('home')->get('/', function () {
     return view('welcome');
 });
 
-//prod route
-Route::get('shop', 'ProductController@index')->name('shop');
+//prod routes
+Route::name('shop')->get('shop', 'ProductController@index');
 Route::get('shop/{slug}', 'ProductController@show')->name('products.show');
+
+// cart routes
+Route::post('panier/ajouter', 'CartController@store')->name('store');
