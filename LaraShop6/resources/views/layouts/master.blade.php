@@ -9,6 +9,7 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{asset('../resources/css/app.css')}}">
@@ -36,13 +37,19 @@
       <a class="p-2 link-secondary" href="#">Culture</a>
       <a class="p-2 link-secondary" href="#">Business</a>
       <a class="p-2 link-secondary" href="#">Politics</a>
-      <a class="p-2 link-success" href="#">PANIER <span class="badge bg-success"> {{Cart::count()}}</span></a>
+      <a class="p-2 link-success" href="{{route('panier')}}">PANIER <span class="badge bg-success"> {{Cart::count()}}</span></a>
     </nav>
   </div>
 
 @if(session('success'))
   <div class="alert alert-success">
       {{session('success')}}
+  </div>
+@endif
+
+@if(session('danger'))
+  <div class="alert alert-danger">
+      {{session('danger')}}
   </div>
 @endif
 
