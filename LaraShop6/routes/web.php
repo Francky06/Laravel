@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -31,3 +32,6 @@ Route::delete('panier/{rowId}', 'CartController@destroy')->name('destroy');
 
 // Panier
 Route::get('panier', 'CartController@index')->name('panier');
+
+// checkout
+Route::get('paiement', 'CheckoutController@index')->name('paiement');
