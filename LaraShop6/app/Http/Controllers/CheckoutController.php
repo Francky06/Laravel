@@ -17,8 +17,12 @@ class CheckoutController extends Controller
      */
     public function index()
     {   
+
+        if(Cart::count() <= 0) {
+            return redirect()->route('shop');
+        }
+
         Stripe::setApiKey('sk_test_51Ia0u4BhbfReWz8ori66hDMFbrxQhwifjMhAZslyalzCz0SwKHHAcadlFCabe9wDt07Gd1rbaSsWNtmgcqDtck0A00CZVKfyyW');
-        
         $intent = PaymentIntent::create([
             'amount' => round(Cart::total()),
             'currency' => 'eur',
@@ -49,8 +53,10 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        Cart::destroy();
+        $data = $request->json()->all();
+        return $data['paymentIntent'];
     }
 
     /**
