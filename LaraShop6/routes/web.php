@@ -36,6 +36,4 @@ Route::get('panier', 'CartController@index')->name('panier');
 // checkout
 Route::get('paiement', 'CheckoutController@index')->name('paiement');
 Route::post('paiement', 'CheckoutController@store')->name('paiementStore');
-Route::get('merci', function() {
-    return view('checkout.thankyou');
-});
+Route::get('merci', 'CheckoutController@thankyou')->name('checkout.thankyou');
