@@ -34,3 +34,7 @@ Route::get('panier', 'CartController@index')->name('panier');
 Route::get('paiement', 'CheckoutController@index')->name('paiement');
 Route::post('paiement', 'CheckoutController@store')->name('paiementStore');
 Route::get('merci', 'CheckoutController@thankyou')->name('checkout.thankyou');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

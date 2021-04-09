@@ -14,7 +14,7 @@
           </strong>
           <h4 class="mb-0">{{$product->title}}</h4>
           <div class="mb-1 text-muted">{{$product->created_at->format('d/m/y')}}</div>
-          <div class="card-text mb-autoe">{{$product->description}}</div>
+          <div class="card-text mb-autoe">{!! $product->description !!}</div>
           <div class="card-text mb-auto"><strong>{{$product->getPrice()}}</strong></div>
 
           <form action="{{route('store')}}" method="POST">
@@ -27,7 +27,7 @@
 
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img src="{{$product->image}}" alt="ph">
+          <img src="{{asset('storage/'.$product->image )}}" alt="ph">
         </div>
       </div>
     </div>
