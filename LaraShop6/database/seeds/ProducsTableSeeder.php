@@ -23,6 +23,9 @@ class ProducsTableSeeder extends Seeder
                 "price" => $faker->numberBetween(20,300) * 100,
                 "image" => "https://via.placeholder.com/200x250",
                  
+            ])->categories()->attach([
+                rand(1,5),
+                rand(1,5)
             ]);
         }
     }

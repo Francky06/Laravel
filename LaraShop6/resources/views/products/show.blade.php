@@ -7,7 +7,11 @@
     <div class="col-md-12">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Technology</strong>
+          <strong class="d-inline-block mb-2 text-success">
+             @foreach ( $product->categories as $category )
+              {{$category->name}}
+            @endforeach
+          </strong>
           <h4 class="mb-0">{{$product->title}}</h4>
           <div class="mb-1 text-muted">{{$product->created_at->format('d/m/y')}}</div>
           <div class="card-text mb-autoe">{{$product->description}}</div>

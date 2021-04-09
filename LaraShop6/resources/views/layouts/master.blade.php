@@ -35,11 +35,9 @@
 
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between"> 
-      <a class="p-2 link-secondary" href="#">Technology</a>
-      <a class="p-2 link-secondary" href="#">Design</a>
-      <a class="p-2 link-secondary" href="#">Culture</a>
-      <a class="p-2 link-secondary" href="#">Business</a>
-      <a class="p-2 link-secondary" href="#">Politics</a>
+        @foreach ( App\Category::all() as $category )
+          <a class="p-2 link-secondary" href="{{route('shop', ['categorie' => $category->slug])}}">{{$category->name}}</a>
+        @endforeach
       <a class="p-2 link-success" href="{{route('panier')}}">PANIER <span class="badge bg-success"> {{Cart::count()}}</span></a>
     </nav>
   </div>
