@@ -1,6 +1,7 @@
 <?php
 
 use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\CheckoutController;
@@ -16,7 +17,7 @@ use App\Http\Controllers\CheckoutController;
 |
 */
 
-Route::name('home')->get('/', function () {
+Route::name('homes')->get('/', function () {
     return view('welcome');
 });
 
@@ -25,18 +26,24 @@ Route::name('shop')->get('shop', 'ProductController@index');
 Route::get('shop/{slug}', 'ProductController@show')->name('products.show');
 Route::get('search', 'ProductController@search')->name('search');
 
-// cart routes
-Route::post('panier/ajouter', 'CartController@store')->name('store');
-Route::delete('panier/{rowId}', 'CartController@destroy')->name('destroy');
-Route::patch('panier/{rowId}', 'CartController@update')->name('update');
-// Panier
-Route::get('panier', 'CartController@index')->name('panier');
 
-// checkout
-Route::get('paiement', 'CheckoutController@index')->name('paiement');
-Route::post('paiement', 'CheckoutController@store')->name('paiementStore');
-Route::get('merci', 'CheckoutController@thankyou')->name('checkout.thankyou');
+Route::group(['middleware' => ['auth']], function() {
+    Route::post('panier/ajouter', 'CartController@store')->name('store');
+    Route::delete('panier/{rowId}', 'CartController@destroy')->name('destroy');
+    Route::patch('panier/{rowId}', 'CartController@update')->name('update');
+    Route::get('panier', 'CartController@index')->name('panier');
+
+    Route::get('paiement', 'CheckoutController@index')->name('paiement');
+    Route::post('paiement', 'CheckoutController@store')->name('paiementStore');
+    Route::get('merci', 'CheckoutController@thankyou')->name('checkout.thankyou');
+});
+
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

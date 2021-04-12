@@ -7,8 +7,9 @@ use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {
@@ -75,7 +76,7 @@ class CheckoutController extends Controller
         }
         
         $order->products = serialize($products);
-        $order->user_id = 15;
+        $order->user_id = Auth()->user()->id;
         $order->save();
         
 

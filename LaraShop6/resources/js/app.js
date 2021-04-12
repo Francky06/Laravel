@@ -1,34 +1,35 @@
-var stripe = Stripe(
-    "pk_test_51Ia0u4BhbfReWz8o2pWwu1QVkClYmux8iJ428U0UHYmULfcXXbs9aGdIso4myzfq12bbuNA42AdEuknhrHjuDhO500lwNB8SNl"
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+require("./bootstrap");
+
+window.Vue = require("vue");
+
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue").default
 );
-var elements = stripe.elements();
 
-var style = {
-    base: {
-        color: "#32325d",
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-            color: "#aab7c4",
-        },
-    },
-    invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a",
-    },
-};
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-var card = elements.create("card", { style: style });
-card.mount("#card-element");
-
-card.on("change", function (event) {
-    var displayError = document.getElementById("card-errors");
-    if (event.error) {
-        displayError.classList.add("alert", "alert-warning");
-        displayError.textContent = event.error.message;
-    } else {
-        displayError.classList.remove("alert", "alert-warning");
-        displayError.textContent = "";
-    }
+const app = new Vue({
+    el: "#app"
 });
