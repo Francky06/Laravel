@@ -8,7 +8,7 @@
 
     @yield('extra-meta')
     
-
+    
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- Custom styles for this template -->
@@ -29,6 +29,7 @@
         <a class="blog-header-logo text-dark" href="{{ route('shop')}} ">Shop</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
+        @include('partials.search')
       </div>
     </div>
   </header>
@@ -42,17 +43,28 @@
     </nav>
   </div>
 
-@if(session('success'))
-  <div class="alert alert-success">
-      {{session('success')}}
-  </div>
-@endif
+  @if(session('success'))
+    <div class="alert alert-success">
+        {{session('success')}}
+    </div>
+  @endif
 
-@if(session('danger'))
-  <div class="alert alert-danger">
-      {{session('danger')}}
-  </div>
-@endif
+  @if(session('danger'))
+    <div class="alert alert-danger">
+        {{session('danger')}}
+    </div>
+  @endif
+
+  @if (count($errors)>0)
+    <div class="alert alert-danger">
+      
+        @foreach ($errors->all() as $error )
+          <div>{{ $error }}</div>    
+        @endforeach
+      
+    </div>
+    
+  @endif
 
 </div>
 
@@ -60,6 +72,12 @@
     @yield('hero')
   </div>
 
+  <div class="text-center">
+  @if (request()->input('q'))
+    <h6>{{ $products->total()}} résultats pour la recherche "{{ request()->q}}" </h6>
+  @endif
+</div>
+<br>
   <div class="row mb-2">
     @yield('content')
   </div>

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\CheckoutController;
+use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::name('home')->get('/', function () {
 //prod routes
 Route::name('shop')->get('shop', 'ProductController@index');
 Route::get('shop/{slug}', 'ProductController@show')->name('products.show');
+Route::get('search', 'ProductController@search')->name('search');
 
 // cart routes
 Route::post('panier/ajouter', 'CartController@store')->name('store');
