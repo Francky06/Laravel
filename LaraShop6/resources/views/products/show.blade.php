@@ -11,17 +11,20 @@
              @foreach ( $product->categories as $category )
               {{$category->name}}
             @endforeach
+             <div class="badge bg-warning text-dark">{{$stock}}</div>
           </strong>
           <h4 class="mb-0">{{$product->title}}</h4>
           <div class="mb-1 text-muted">{{$product->created_at->format('d/m/y')}}</div>
           <div class="card-text mb-autoe">{!! $product->description !!}</div>
           <div class="card-text mb-auto"><strong>{{$product->getPrice()}}</strong></div>
-
-          <form action="{{route('store')}}" method="POST">
+          @if ($stock == 'Disponible')
+            <form action="{{route('store')}}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{$product->id}}">
             <button type="submit" class="btn btn-success">Ajouter au panier</button>
           </form>
+          @endif
+        
         </div>
 
         <div class="col-auto d-none d-lg-block text-center">

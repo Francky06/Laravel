@@ -92,7 +92,7 @@ card.on("change", function(event) {
                         var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');                       
                         var form = document.getElementById("payment-form");
                         var url = form.action;
-                        var redirect = 'merci';
+                        
 
                         fetch(
                         url,
@@ -109,7 +109,11 @@ card.on("change", function(event) {
                                 })
                             }
                         ).then((data) => {
-                            console.log(data)
+                            if(data.status === 400) {
+                                var redirect = 'shop';
+                            } else {
+                                var redirect = 'merci';
+                            }
                             window.location.href = redirect;
 
                         }).catch((error) => {
