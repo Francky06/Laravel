@@ -20,19 +20,39 @@
           <form action="{{route('store')}}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{$product->id}}">
-
             <button type="submit" class="btn btn-success">Ajouter au panier</button>
-
           </form>
+        </div>
 
+        <div class="col-auto d-none d-lg-block text-center">
+          <img src="{{ asset('storage/'.$product->image) }}" alt="ph" width="120" height="100" class="img-thumbnail" id="mainImage">
+          <div class="col-auto d-none d-lg-block">  
+            @if ($product->images)
+                <img src="{{ asset('storage/'.$product->image) }}" alt="ph" width="50" height="80" class="img-thumbnail">
+                @foreach (json_decode($product->images, true) as $image )     
+                  <img src="{{ asset('storage/'. $image) }}" alt="test" width="50" height="80" class="img-thumbnail">
+                @endforeach
+            @endif
+          </div>
         </div>
-        <div class="col-auto d-none d-lg-block">
-          <img src="{{asset('storage/'.$product->image )}}" alt="ph">
-        </div>
+
       </div>
     </div>
   </div>
-  </main>
+</main>
+@endsection
 
-  @endsection
-  
+@section('extra-script')
+  <script>
+    var mainImage = document.querySelector('#mainImage');
+    var thumbnails = document.querySelectorAll('.img-thumbnail');
+    thumbnails.forEach((element) => element.addEventListener('click', changeImage));
+
+    function changeImage(e) {
+      mainImage.src = this.src;
+
+    }
+
+
+  </script>  
+@endsection
