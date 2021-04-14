@@ -27,6 +27,7 @@ Route::get('shop/{slug}', 'ProductController@show')->name('products.show');
 Route::get('search', 'ProductController@search')->name('search');
 
 
+
 Route::group(['middleware' => ['auth']], function() {
     Route::post('panier/ajouter', 'CartController@store')->name('store');
     Route::delete('panier/{rowId}', 'CartController@destroy')->name('destroy');
