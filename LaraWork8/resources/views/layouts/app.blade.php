@@ -4,18 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>LaraWork8</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         
       
     </head>
     <body>
-@include('partials.navbar')
+
+      @include('partials.navbar')
+
       <div class="container mx-auto px-4">
-
-        
         @yield('content')
-
       </div>
 
     </body>

@@ -1,7 +1,7 @@
 <header class="flex items-center justify-between bg-green-500 p-4">
     <div class="text-white hover:text-black">Works</div>
     <nav>
-        <a href="#" class="hover:text-white mr-4">Missions</a>
+        <a href="{{ route('jobs.index') }}" class="hover:text-white mr-4">Missions</a>
         @guest
             <a href="{{ route('login') }}" class="hover:text-white mr-4">Se connecter</a>
             <a href="{{ route('register') }}" class="hover:text-white">S'enregistrer</a>
