@@ -6,6 +6,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @livewireStyles
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
       
     </head>
     <body>

@@ -36,6 +36,17 @@ class Search extends Component
         }
     }
 
+
+    public function resetIndex() {
+        $this->reset('selectedIndex');
+    }
+
+    public function showJob() {
+        if ($this->jobs) {
+            return redirect()->route('jobs.show', [$this->jobs[$this->selectedIndex]['id']]);
+        }
+    }
+
     public function render()
     { 
         return view('livewire.search');

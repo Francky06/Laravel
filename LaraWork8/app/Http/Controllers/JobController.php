@@ -13,4 +13,11 @@ class JobController extends Controller
             'jobs' => $jobs
             ]);
     }
+
+    public function show(Job $id) {      
+        return view('jobs.show', [
+            'job' => $id
+        ]);
+    }
+    
 }
