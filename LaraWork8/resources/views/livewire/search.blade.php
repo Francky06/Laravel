@@ -1,5 +1,5 @@
 <div class="inline-block mr-5 relative" x-data = "{ open: true }">
-    <input @click.away="open = false; @this.resetIndex()" @click="open = true" 
+    <input @click.away="open = false;" @click="open = true" 
     class="text-gray-700 border focus:outline-none rounded-full px-2 py-1 w-56" placeholder="Recherche" 
     wire:model='query'
     wire:keydown.arrow-down.prevent = 'incrementIndex'
@@ -15,7 +15,7 @@
     <div class="absolute w-56 bg-gray-100 rounded mt-2" x-show ="open"> 
         @if (strlen($query) > 2)
             <div>
-                @if (count($jobs) >0)
+                @if (count($jobs) > 0)
                 @foreach ($jobs as $index => $job )
                     <p class="p-1 text-center {{ $index == $selectedIndex ? 'text-green-400' : 'text-green-800'}}">{{ $job->title }}</p>         
                 @endforeach
@@ -26,5 +26,7 @@
         @endif
     </div>   
 </div>
+
+
 
 

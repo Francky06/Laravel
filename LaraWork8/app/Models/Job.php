@@ -17,5 +17,13 @@ class Job extends Model
         return $query->where('status', 1);
     }
 
-    
+    public function likes() {
+        return $this->belongsToMany('App\Models\User');
+    }
+
+    public function isLiked() {
+        if (auth()->check()) {
+            return auth()->user()->likes->contains('id', $this->id);
+    }
+}
 }

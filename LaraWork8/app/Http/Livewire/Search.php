@@ -9,7 +9,7 @@ use Livewire\Component;
 class Search extends Component
 {
     public $query;
-    public $jobs = [];
+    public $jobs;
     public $selectedIndex = 0;
 
     public function incrementIndex() {
@@ -42,7 +42,7 @@ class Search extends Component
     }
 
     public function showJob() {
-        if ($this->jobs) {
+        if ($this->jobs->isNotEmpty()) {
             return redirect()->route('jobs.show', [$this->jobs[$this->selectedIndex]['id']]);
         }
     }

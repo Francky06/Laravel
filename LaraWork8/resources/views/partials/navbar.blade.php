@@ -1,7 +1,7 @@
 <header class="flex items-center justify-between bg-green-500 p-4">
     <div class="text-white hover:text-black">Works</div>
     <nav>
-        <livewire:search />
+            <livewire:search />
         <a href="{{ route('jobs.index') }}" class="hover:text-white mr-4">Missions</a>
         @guest
             <a href="{{ route('login') }}" class="hover:text-white mr-4">Se connecter</a>
