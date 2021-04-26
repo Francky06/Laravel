@@ -13,6 +13,8 @@ class Job extends Component
     public function addLike() {
         if( auth()->check()) {
         auth()->user()->likes()->toggle($this->job->id);
+        } else {
+            $this->emit('flash', 'Merci de vous connecter', 'error');
         }
 
         
