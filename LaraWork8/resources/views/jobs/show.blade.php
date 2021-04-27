@@ -13,4 +13,14 @@
             <span class="text-sm text-gray-600"> {{ number_format($job->price / 100, 2, ',', ' ') }} €</span>
         </div> 
 
+
+        <section x-data="{open: false}">
+            <a href="#" class="text-green-500" @click="open = !open">Soumettre sa candidature</a>
+            <form action="{{ route('proposal.store', $job)}}" method="POST" class="w-full" x-cloak x-show="open">
+                @csrf
+                <textarea class="p-3 w-full font-thin bg-gray-100 mt-3" style="height: 250px;" name="content"></textarea>
+                <button type="submit" class="block bg-green-700 text-white px-3 py-2 mt-3">Valider</button>
+            </form>
+        </section>
+
 @endsection

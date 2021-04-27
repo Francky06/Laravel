@@ -13,7 +13,7 @@
             <p class="text-md text-gray-800">{{ $job->description}}</p>
             <div class="flex items-center">
                 <span class="h-2 w-2 bg-green-300 rounded-full mr-1 mt-1"></span>
-                <a href="#" class="hover:text-green-500">Consulter la mission</a>
+                <a href="{{ route('jobs.show', $job->id)}}" class="hover:text-green-500">Consulter la mission</a>
             </div>
             <span class="text-sm text-gray-600"> {{ number_format($job->price / 100, 2, ',', ' ') }} €</span>
         </div> 

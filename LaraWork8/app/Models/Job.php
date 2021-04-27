@@ -24,6 +24,11 @@ class Job extends Model
     public function isLiked() {
         if (auth()->check()) {
             return auth()->user()->likes->contains('id', $this->id);
+        }
     }
-}
+
+    public function proposals() {
+        return $this->hasMany('App\Models\Proposal');
+    }
+
 }

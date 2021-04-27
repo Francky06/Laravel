@@ -16,9 +16,8 @@ class Job extends Component
         } else {
             $this->emit('flash', 'Merci de vous connecter', 'error');
         }
-
-        
     }
+    
 
 
     public function render()
